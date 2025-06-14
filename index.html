@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Startup Launch</title>
+  <!-- In index.html -->
+<link rel="stylesheet" href="style.css" />
+<script src="script.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      background: #1e293b;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-btn {
+      background: #38bdf8;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: #0ea5e9;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .features, .testimonials, .pricing {
+      display: grid;
+      gap: 30px;
+    }
+
+    .features div, .testimonials div, .pricing div {
+      background: #f1f5f9;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button[type="submit"] {
+      background: #16a34a;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .features, .testimonials, .pricing {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+</style>
+  </head>
+
+  <!-- Hero Section -->
+   <section class="bg-white text-center py-20 px-6">
+  <h1 class="text-5xl font-bold text-gray-800 mb-6">Empower Your Startup Journey</h1>
+  <p class="text-xl text-gray-600 mb-8">Launch your ideas with confidence and impact.</p>
+  <header class="hero">
+    <div class="container">
+      <h1>Launch Your Future Today</h1>
+      <p>We build tools to help startups scale faster than ever.</p>
+      <a href="#contact" class="cta-btn">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <section class="services">
+    <div class="container">
+      <h2>OUR FEATURES</h2>
+      <div class="service-cards">
+        <div class="card">
+          <h3>Fast Deployment</h3>
+          <p>Deploy your app in minutes, not hours and also Launch your product in days, not months</p>
+        </div>
+        <div class="card">
+          <h3>Custom Solutions</h3>
+          <p>Leverage data to grow smarter and faster and Tailored features to fit your business model</p>
+        </div>
+        <div class="card">
+          <h3>24/7 Support</h3>
+          <p>Get help when you need it most, day or night and Our experts are here to help anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+<section class="bg-white py-20 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold text-gray-800 mb-12">What Our Clients Say</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-100 p-6 rounded-lg shadow">
+        <p class="italic text-gray-700">"This service boosted our growth in just weeks! The support is top-notch and Incredible!"</p>
+        <h4 class="mt-4 font-semibold text-blue-600">– yashwith swetan</h4>
+      </div>
+      <div class="bg-gray-100 p-6 rounded-lg shadow">
+        <p class="italic text-gray-700">"A truly seamless experience from start to finish. Highly recommend! and also This changed our business trajectory!"</p>
+        <h4 class="mt-4 font-semibold text-blue-600">–Asha louis</h4>
+      </div>
+      <div class="bg-gray-100 p-6 rounded-lg shadow">
+        <p class="italic text-gray-700">"We loved the speed and simplicity. Our team is more productive than ever."</p>
+        <h4 class="mt-4 font-semibold text-blue-600">– sunil bhagath</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Pricing Section -->
+<section class="bg-gray-50 py-20 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold text-gray-800 mb-12">Choose your plan</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Basic Plan -->
+      <div class="bg-white p-8 rounded-lg shadow border">
+        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Basic</h3>
+        <p class="text-4xl font-bold mb-4">$19<span class="text-base font-normal">/mo</span></p>
+        <ul class="text-gray-700 mb-6">
+          <li>✔️ 1 User</li>
+          <li>✔️ Email Support</li>
+          <li>✔️ 5 Projects</li>
+        </ul>
+        <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Get Started</a>
+      </div>
+      <!-- Pro Plan -->
+      <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-blue-600 transform scale-105">
+        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Pro</h3>
+        <p class="text-4xl font-bold mb-4">$49<span class="text-base font-normal">/mo</span></p>
+        <ul class="text-gray-700 mb-6">
+          <li>✔️ 5 Users</li>
+          <li>✔️ Priority Support</li>
+          <li>✔️ Unlimited Projects</li>
+        </ul>
+        <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Get Started</a>
+      </div>
+      <!-- Enterprise Plan -->
+      <div class="bg-white p-8 rounded-lg shadow border">
+        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Enterprise</h3>
+        <p class="text-4xl font-bold mb-4">Custom</p>
+        <ul class="text-gray-700 mb-6">
+          <li>✔️ Unlimited Users</li>
+          <li>✔️ Dedicated Support</li>
+          <li>✔️ Advanced Analytics</li>
+        </ul>
+        <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- Pricing Section -->
+  <section class="pricing">
+    <div>
+      <h3>Basic</h3>
+      <p>$29/mo</p>
+      <p>Essential tools for new startups</p>
+    </div>
+    <div>
+      <h3>Pro</h3>
+      <p>$79/mo</p>
+      <p>Everything you need to scale</p>
+    </div>
+    <div>
+      <h3>Enterprise</h3>
+      <p>Custom</p>
+      <p>Full-service solution tailored to you</p>
+    </div>
+  </section>
+
+<!-- Contact Form -->
+  <section>
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+<!-- Footer -->
+  <footer>
+    <p>© 2025 Startup Launch. All rights reserved.</p>
+  </footer>
+</body>
+</html>
