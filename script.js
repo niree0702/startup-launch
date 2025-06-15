@@ -1,37 +1,44 @@
-// Smooth scroll to Features section from floating button
-document.querySelector('.floating-btn').addEventListener('click', () => {
-  const target = document.getElementById('features');
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
+document.addEventListener('DOMContentLoaded', () => {
+  const signupModal = document.getElementById('signupModal');
+  const mainContent = document.getElementById('mainContent');
+  const signupForm = document.getElementById('signupForm');
+
+  signupForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    signupModal.style.display = 'none';
+    mainContent.classList.remove('hidden');
+  });
+
+  document.getElementById('getStarted').addEventListener('click', () => {
+    document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+// script.js
+
+// Elements
+const signupModal = document.getElementById("signupModal");
+const getStartedBtn = document.getElementById("getStarted");
+const signupForm = document.getElementById("signupForm");
+const mainContent = document.getElementById("mainContent");
+
+// Show Signup Modal on "Get Started"
+getStartedBtn.addEventListener("click", () => {
+  signupModal.style.display = "block";
+});
+
+// Handle Sign Up Submission
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Normally you'd send data to backend here
+  // For now, just simulate a successful sign-up
+  signupModal.style.display = "none";
+  mainContent.classList.remove("hidden");
+});
+
+// Optional: Close modal on outside click
+window.addEventListener("click", (e) => {
+  if (e.target === signupModal) {
+    signupModal.style.display = "none";
   }
 });
-
-// Optional: Handle contact form submission
-document.querySelector('form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  alert('Thank you for contacting StoryNest! We will get back to you soon.');
-  this.reset();
-});
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("signupModal");
-    const btn = document.getElementById("get-started-btn");
-    const closeBtn = document.querySelector(".close");
-
-    btn.onclick = () => {
-      modal.style.display = "block";
-    };
-
-    closeBtn.onclick = () => {
-      modal.style.display = "none";
-    };
-
-    window.onclick = (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-  });
-</script>
-
-
-
-
