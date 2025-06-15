@@ -107,4 +107,33 @@ window.addEventListener("click", (e) => {
 
   loop();
 </script>
+<script>
+  const form = document.getElementById('forgotForm');
+  const emailInput = document.getElementById('email');
+  const messageDiv = document.getElementById('message');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+
+    if (!validateEmail(email)) {
+      messageDiv.textContent = "Please enter a valid email address.";
+      messageDiv.style.color = "#ef4444"; // red
+      return;
+    }
+
+    // Simulate sending reset email
+    messageDiv.textContent = "Reset link sent to " + email;
+    messageDiv.style.color = "#10b981"; // green
+
+    emailInput.value = "";
+  });
+
+  function validateEmail(email) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email.toLowerCase());
+  }
+</script>
+
 
