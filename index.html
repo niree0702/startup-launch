@@ -1,52 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Startup Landing Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-<style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StoryNest – Dive into Stories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --background: #ffffff;
+      --text: #333333;
+      --accent: #f4f4f4;
+    }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
       line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
     }
 
-    header, section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
+    header {
+      background: var(--accent);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
     }
 
     .hero {
-      background: #ffffff;
+      padding: 5rem 2rem;
       text-align: center;
-      padding: 6rem 2rem;
+      background: #fefefe;
     }
 
     .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      color: var(--primary);
     }
 
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      margin: 1rem 0;
+      font-size: 1.1rem;
     }
 
-    .cta-button {
-      background: #007bff;
+    .btn-primary {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
       color: white;
-      padding: 1rem 2rem;
       border: none;
       border-radius: 8px;
       font-size: 1rem;
@@ -54,104 +75,151 @@
       transition: background 0.3s;
     }
 
-    .cta-button:hover {
-      background: #0056b3;
+    .btn-primary:hover {
+      background: #5a52e0;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .features, .testimonials, .pricing, .contact {
-      background: #fff;
-      margin: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    .feature-grid, .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--accent);
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .floating-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #007bff;
-      color: white;
-      padding: 0.8rem 1rem;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      border: none;
-      cursor: pointer;
-      z-index: 999;
-      animation: bounce 2s infinite;
+    .testimonials blockquote {
+      font-style: italic;
+      margin-bottom: 1rem;
     }
 
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
+    .pricing h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
     }
 
-    @media (max-width: 768px) {
+    form input, form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    form button {
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: var(--accent);
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
       .hero h1 {
         font-size: 2rem;
-      }
-
-      .floating-btn {
-        padding: 0.6rem 0.8rem;
-        font-size: 1.2rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <header class="hero">
-    <h1>Launch Your Startup with Us</h1>
-    <p>Empowering ideas with modern tech solutions. Let’s build something amazing together.</p>
-    <button class="cta-button" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' })">Get Started</button>
+
+  <header>
+    <div class="logo">StoryNest</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
+  <section class="hero">
+    <h1>Dive into Stories that Matter</h1>
+    <p>Discover and share your favorite books and TV shows. Curated picks. Reviews. Community insights.</p>
+    <button class="btn-primary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Get Started</button>
+  </section>
+
   <section id="features" class="features">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Custom Web Development</li>
-      <li>App Design & Prototyping</li>
-      <li>Marketing and Analytics Integration</li>
-    </ul>
+    <h2>What We Offer</h2>
+    <div class="feature-grid">
+      <div class="card">
+        <h3>Curated Recommendations</h3>
+        <p>Get personalized book and show suggestions based on your preferences.</p>
+      </div>
+      <div class="card">
+        <h3>User Reviews</h3>
+        <p>See what others think before diving into a new series or novel.</p>
+      </div>
+      <div class="card">
+        <h3>Discussion Forums</h3>
+        <p>Engage with a vibrant community of story lovers just like you.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="testimonials">
-    <h2>Testimonials</h2>
-    <blockquote>
-      "Absolutely loved working with this team. The site they built skyrocketed our conversions!" - Alex D.
-    </blockquote>
-    <blockquote>
-      "Professional, creative, and quick. Highly recommend." - Jamie L.
-    </blockquote>
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Users Say</h2>
+    <blockquote>"StoryNest helped me find my next favorite binge-watch show. The community is amazing!"</blockquote>
+    <cite>– Alex, Book Lover & TV Buff</cite>
   </section>
 
-  <section class="pricing">
+  <section id="pricing" class="pricing">
     <h2>Pricing Plans</h2>
-    <ul>
-      <li>Starter Plan - $199/month</li>
-      <li>Pro Plan - $499/month</li>
-      <li>Enterprise Plan - Custom Pricing</li>
-    </ul>
+    <div class="pricing-grid">
+      <div class="card">
+        <h3>Free</h3>
+        <p>Access to basic features and community forums.</p>
+        <strong>$0/month</strong>
+      </div>
+      <div class="card">
+        <h3>Premium</h3>
+        <p>Personalized curation, no ads, and early access.</p>
+        <strong>$5/month</strong>
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
+  <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <form>
-      <label>Name:<br><input type="text" name="name" required></label><br><br>
-      <label>Email:<br><input type="email" name="email" required></label><br><br>
-      <label>Message:<br><textarea name="message" rows="5" required></textarea></label><br><br>
-      <button class="cta-button" type="submit">Send</button>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button class="btn-primary" type="submit">Send Message</button>
     </form>
   </section>
-<script src="script.js" defer></script>
+
+  <footer>
+    &copy; 2025 StoryNest. All rights reserved.
+  </footer>
+
+  <script>
+    // Smooth scroll already integrated in button click
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thanks for reaching out! We’ll get back to you soon.');
+      this.reset();
+    });
+  </script>
 
 </body>
-
 </html>
