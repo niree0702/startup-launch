@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -135,6 +136,27 @@ input:focus, button:hover {
 .hidden {
   display: none;
 }
+.hero {
+  background-image: url('path-to-your-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100vh; /* Full viewport height */
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* optional overlay for contrast */
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
 
 /* Hero Section */
 .hero {
