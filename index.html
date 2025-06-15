@@ -2,87 +2,120 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tamizan Skills - Empowering Students</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamizan Skills - Empowering Student Futures</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <!-- Signup Modal -->
   <div id="signupModal" class="modal">
     <div class="modal-content">
-      <h2>Sign Up</h2>
+      <h2>Sign Up to Continue</h2>
       <form id="signupForm">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
         <button type="submit">Sign Up</button>
       </form>
     </div>
   </div>
 
-  <!-- Main Website Content -->
+  <!-- Main Content Hidden Until Signup -->
   <div id="mainContent" class="hidden">
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-overlay">
-        <h1>Empowering Students. Shaping Futures.</h1>
-        <p>Explore trending tech courses designed for student success and digital-age growth.</p>
-        <button id="getStartedBtn">Get Started</button>
+        <h1>Empowering Students, Shaping Futures</h1>
+        <p>Explore trending technology courses designed for your success and growth in the digital age.</p>
+        <button id="getStarted">Get Started</button>
       </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="section">
-      <h2>Top Features</h2>
-      <div class="features-grid">
-        <div class="feature">Interactive Learning</div>
-        <div class="feature">Industry Mentors</div>
-        <div class="feature">Real Projects</div>
-      </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="section">
-      <h2>Pricing Plans</h2>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <h3>Basic</h3>
-          <p>$0/month</p>
+    <section id="features" class="features">
+      <h2>Why Choose Tamizan Skills?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Trending Tech Courses</h3>
+          <p>Courses in AI, Web3, Blockchain, ML, and more designed to stay ahead of the curve.</p>
         </div>
-        <div class="price-card popular">
-          <h3>Pro</h3>
-          <p>$29/month</p>
+        <div class="feature-card">
+          <h3>Student-Centric Learning</h3>
+          <p>Hands-on projects and guidance tailored to help students succeed in real-world applications.</p>
         </div>
-        <div class="price-card">
-          <h3>Enterprise</h3>
-          <p>Contact us</p>
+        <div class="feature-card">
+          <h3>Expert Mentorship</h3>
+          <p>Guidance from industry professionals ensuring you grow with confidence.</p>
         </div>
       </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="section">
+    <section class="testimonials">
       <h2>What Students Say</h2>
       <div class="testimonial">
-        <p>"Tamizan Skills transformed my career!"</p>
-        <span>- Priya K.</span>
+        <p>“Tamizan Skills helped me land my first internship in AI. The courses are hands-on and mentors are amazing!”</p>
+        <span>- Kavya, AI Enthusiast</span>
+      </div>
+      <div class="testimonial">
+        <p>“The blockchain course was exactly what I needed. Real-world projects helped me build confidence.”</p>
+        <span>- Raj, B.Tech Final Year</span>
+      </div>
+    </section>
+
+ye    <!-- Pricing Plans Section -->
+    <section class="pricing">
+      <h2>Pricing Plans</h2>
+      <div class="pricing-cards">
+        <div class="card">
+          <h3>Basic</h3>
+          <p>₹499/month</p>
+          <ul>
+            <li>Access to all video content</li>
+            <li>Weekly assignments</li>
+          </ul>
+        </div>
+        <div class="card popular">
+          <h3>Pro</h3>
+          <p>₹999/month</p>
+          <ul>
+            <li>Everything in Basic</li>
+            <li>1-on-1 Mentorship</li>
+            <li>Project Feedback</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Elite</h3>
+          <p>₹1499/month</p>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>Career Counseling</li>
+            <li>Resume Building</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section class="contact">
       <h2>Contact Us</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Name" required />
-        <input type="email" placeholder="Email" required />
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send</button>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
       </form>
     </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Tamizan Skills. All rights reserved.</p>
+    </footer>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>
