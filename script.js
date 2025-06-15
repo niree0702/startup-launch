@@ -56,3 +56,55 @@ window.addEventListener("click", (e) => {
     signupModal.style.display = "none";
   }
 });
+<script>
+  const phrases = [
+    "AI-powered insights.",
+    "Real-time progress tracking.",
+    "Tailored learning paths.",
+    "Gamified quizzes and badges."
+  ];
+
+  let i = 0, j = 0, currentPhrase = [], isDeleting = false, isEnd = false;
+  const el = document.getElementById('typewriter');
+
+  function loop() {
+    isEnd = false;
+    el.innerHTML = currentPhrase.join('');
+
+    if (i < phrases.length) {
+      if (!isDeleting && j <= phrases[i].length) {
+        currentPhrase.push(phrases[i][j]);
+        j++;
+        el.innerHTML = currentPhrase.join('');
+      }
+
+      if (isDeleting && j <= phrases[i].length) {
+        currentPhrase.pop();
+        j--;
+        el.innerHTML = currentPhrase.join('');
+      }
+
+      if (j === phrases[i].length) {
+        isEnd = true;
+        isDeleting = true;
+        setTimeout(loop, 1000);
+        return;
+      }
+
+      if (isDeleting && j === 0) {
+        currentPhrase = [];
+        isDeleting = false;
+        i++;
+        if (i === phrases.length) {
+          i = 0;
+        }
+      }
+    }
+
+    const speed = isEnd ? 1000 : isDeleting ? 50 : 100;
+    setTimeout(loop, speed);
+  }
+
+  loop();
+</script>
+
