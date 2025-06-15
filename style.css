@@ -21,15 +21,6 @@ a {
   padding: 0 1rem;
 }
 
-/* Header */
-header {
-  background: #121212;
-  color: #fff;
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
 header .nav {
   display: flex;
   justify-content: space-between;
