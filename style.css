@@ -4,6 +4,12 @@ body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
 }
+:root {
+  --primary: #2563eb;
+  --bg-gradient: linear-gradient(135deg, #eef2ff, #f8f9fc);
+  --card-bg: rgba(255, 255, 255, 0.75);
+}
+
 /* Modal Background Enhancements */
 .modal {
   position: fixed;
@@ -283,6 +289,64 @@ input:focus, button:hover {
   background: #fff;
   text-align: center;
 }
+.features-section {
+  background: linear-gradient(135deg, #eef2ff, #f8f9fc);
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 60px;
+  animation: floatTitle 3s ease-in-out infinite;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@keyframes floatTitle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+  padding: 30px 25px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-align: left;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
 
 .feature-grid {
   display: flex;
