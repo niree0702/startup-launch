@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <button id="get-started-btn" class="cta-button">Get Started</button>
- <style>
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -160,11 +159,9 @@
 </head>
 
 <body>
-  <div id="signupModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <!-- Sign up form -->
-<h2>Welcome to Tamizan Skills</h2>
+  <div class="modal" id="signupModal">
+    <div class="modal-content">
+      <h2>Welcome to Tamizan Skills</h2>
       <p>Sign up to explore empowering content!</p>
       <form onsubmit="event.preventDefault(); closeModal();">
         <input type="text" placeholder="Your Name" required />
