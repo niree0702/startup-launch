@@ -107,6 +107,53 @@ body {
     transform: translateY(0);
   }
 }
+.forgot-password {
+  padding: 4rem 1rem;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.forgot-password h2 {
+  font-size: 2rem;
+  color: #1e293b;
+}
+
+.forgot-password p {
+  margin: 0.5rem 0 1.5rem;
+  color: #64748b;
+}
+
+.forgot-password input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.forgot-password button {
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.forgot-password button:hover {
+  background-color: #2563eb;
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #10b981;
+}
+
 
 .hero-content {
   animation: fadeUp 1s ease-out forwards;
