@@ -53,6 +53,65 @@ body {
     background: rgba(10, 10, 10, 0.6);
   }
 }
+/* --- Gradient Title --- */
+.animated-gradient-text {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #3b82f6, #9333ea, #14b8a6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientMove 5s linear infinite;
+}
+
+/* --- Typewriter Effect --- */
+.typewriter-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #1e293b;
+  height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #2563eb;
+}
+
+/* --- Wavy SVG Divider --- */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.hero-wave svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+/* --- Gradient Animation --- */
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+/* --- Optional Entrance Animation --- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content {
+  animation: fadeUp 1s ease-out forwards;
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
