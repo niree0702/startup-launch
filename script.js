@@ -1,3 +1,17 @@
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // Optionally store user info in localStorage
+  const name = this.querySelector("input[type='text']").value;
+  localStorage.setItem("username", name);
+
+  // Hide modal and show main content
+  document.getElementById("signupModal").classList.add("hidden");
+  document.getElementById("mainContent").classList.remove("hidden");
+
+  // Welcome message (optional)
+  alert(`Welcome to Tamizan Skills, ${name}!`);
+});
 document.addEventListener('DOMContentLoaded', () => {
   const signupModal = document.getElementById('signupModal');
   const mainContent = document.getElementById('mainContent');
