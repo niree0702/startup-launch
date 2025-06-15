@@ -12,3 +12,23 @@ document.querySelector('form').addEventListener('submit', function (e) {
   alert('Thank you for contacting StoryNest! We will get back to you soon.');
   this.reset();
 });
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("signupModal");
+    const btn = document.getElementById("get-started-btn");
+    const closeBtn = document.querySelector(".close");
+
+    btn.onclick = () => {
+      modal.style.display = "block";
+    };
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  });
+</script>
+
