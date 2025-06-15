@@ -4,45 +4,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Startup Launch</title>
-  <!-- In index.html -->
-<link rel="stylesheet" href="style.css" />
-<script src="script.js" defer></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>Startup Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 <style>
-  * {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
     }
 
     body {
+      font-family: 'Roboto', sans-serif;
       line-height: 1.6;
+      background: #f9f9f9;
       color: #333;
     }
 
-    header {
-      background: #1e293b;
-      color: white;
-      padding: 60px 20px;
+    header, section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero {
+      background: #ffffff;
       text-align: center;
+      padding: 6rem 2rem;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
-    header p {
+    .hero p {
       font-size: 1.2rem;
-      margin-bottom: 20px;
+      margin-bottom: 2rem;
     }
 
-    .cta-btn {
-      background: #38bdf8;
+    .cta-button {
+      background: #007bff;
       color: white;
-      padding: 12px 24px;
+      padding: 1rem 2rem;
       border: none;
       border-radius: 8px;
       font-size: 1rem;
@@ -50,186 +54,108 @@
       transition: background 0.3s;
     }
 
-    .cta-btn:hover {
-      background: #0ea5e9;
+    .cta-button:hover {
+      background: #0056b3;
     }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .features, .testimonials, .pricing {
-      display: grid;
-      gap: 30px;
-    }
-
-    .features div, .testimonials div, .pricing div {
-      background: #f1f5f9;
-      padding: 20px;
+    .features, .testimonials, .pricing, .contact {
+      background: #fff;
+      margin: 2rem 0;
+      padding: 2rem;
       border-radius: 10px;
-      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    button[type="submit"] {
-      background: #16a34a;
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
       color: white;
-      padding: 10px;
+      padding: 0.8rem 1rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
       border: none;
-      border-radius: 6px;
-      font-size: 1rem;
+      cursor: pointer;
+      z-index: 999;
+      animation: bounce 2s infinite;
     }
 
-    @media (min-width: 768px) {
-      .features, .testimonials, .pricing {
-        grid-template-columns: repeat(3, 1fr);
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
       }
     }
-</style>
-  </head>
 
-  <!-- Hero Section -->
-   <section class="bg-white text-center py-20 px-6">
-  <h1 class="text-5xl font-bold text-gray-800 mb-6">Empower Your Startup Journey</h1>
-  <p class="text-xl text-gray-600 mb-8">Launch your ideas with confidence and impact.</p>
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .floating-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="floating-btn" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' })">
+    🚀
+  </button>
+
   <header class="hero">
-    <div class="container">
-      <h1>Launch Your Future Today</h1>
-      <p>We build tools to help startups scale faster than ever.</p>
-      <a href="#contact" class="cta-btn">Get Started</a>
-    </div>
+    <h1>Launch Your Startup with Us</h1>
+    <p>Empowering ideas with modern tech solutions. Let’s build something amazing together.</p>
+    <button class="cta-button" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' })">Get Started</button>
   </header>
 
-  <!-- Services Section -->
-  <section class="services">
-    <div class="container">
-      <h2>OUR FEATURES</h2>
-      <div class="service-cards">
-        <div class="card">
-          <h3>Fast Deployment</h3>
-          <p>Deploy your app in minutes, not hours and also Launch your product in days, not months</p>
-        </div>
-        <div class="card">
-          <h3>Custom Solutions</h3>
-          <p>Leverage data to grow smarter and faster and Tailored features to fit your business model</p>
-        </div>
-        <div class="card">
-          <h3>24/7 Support</h3>
-          <p>Get help when you need it most, day or night and Our experts are here to help anytime.</p>
-        </div>
-      </div>
-    </div>
+  <section id="features" class="features">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Custom Web Development</li>
+      <li>App Design & Prototyping</li>
+      <li>Marketing and Analytics Integration</li>
+    </ul>
   </section>
 
-  <!-- Testimonials Section -->
-<section class="bg-white py-20 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-4xl font-bold text-gray-800 mb-12">What Our Clients Say</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-gray-100 p-6 rounded-lg shadow">
-        <p class="italic text-gray-700">"This service boosted our growth in just weeks! The support is top-notch and Incredible!"</p>
-        <h4 class="mt-4 font-semibold text-blue-600">– yashwith swetan</h4>
-      </div>
-      <div class="bg-gray-100 p-6 rounded-lg shadow">
-        <p class="italic text-gray-700">"A truly seamless experience from start to finish. Highly recommend! and also This changed our business trajectory!"</p>
-        <h4 class="mt-4 font-semibold text-blue-600">–Asha louis</h4>
-      </div>
-      <div class="bg-gray-100 p-6 rounded-lg shadow">
-        <p class="italic text-gray-700">"We loved the speed and simplicity. Our team is more productive than ever."</p>
-        <h4 class="mt-4 font-semibold text-blue-600">– sunil bhagath</h4>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="testimonials">
+    <h2>Testimonials</h2>
+    <blockquote>
+      "Absolutely loved working with this team. The site they built skyrocketed our conversions!" - Alex D.
+    </blockquote>
+    <blockquote>
+      "Professional, creative, and quick. Highly recommend." - Jamie L.
+    </blockquote>
+  </section>
 
-      <!-- Pricing Section -->
-<section class="bg-gray-50 py-20 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-4xl font-bold text-gray-800 mb-12">Choose your plan</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Basic Plan -->
-      <div class="bg-white p-8 rounded-lg shadow border">
-        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Basic</h3>
-        <p class="text-4xl font-bold mb-4">$19<span class="text-base font-normal">/mo</span></p>
-        <ul class="text-gray-700 mb-6">
-          <li>✔️ 1 User</li>
-          <li>✔️ Email Support</li>
-          <li>✔️ 5 Projects</li>
-        </ul>
-        <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Get Started</a>
-      </div>
-      <!-- Pro Plan -->
-      <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-blue-600 transform scale-105">
-        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Pro</h3>
-        <p class="text-4xl font-bold mb-4">$49<span class="text-base font-normal">/mo</span></p>
-        <ul class="text-gray-700 mb-6">
-          <li>✔️ 5 Users</li>
-          <li>✔️ Priority Support</li>
-          <li>✔️ Unlimited Projects</li>
-        </ul>
-        <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Get Started</a>
-      </div>
-      <!-- Enterprise Plan -->
-      <div class="bg-white p-8 rounded-lg shadow border">
-        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Enterprise</h3>
-        <p class="text-4xl font-bold mb-4">Custom</p>
-        <ul class="text-gray-700 mb-6">
-          <li>✔️ Unlimited Users</li>
-          <li>✔️ Dedicated Support</li>
-          <li>✔️ Advanced Analytics</li>
-        </ul>
-        <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Contact Us</a>
-      </div>
-    </div>
-  </div>
-</section>
-
- <!-- Pricing Section -->
   <section class="pricing">
-    <div>
-      <h3>Basic</h3>
-      <p>$29/mo</p>
-      <p>Essential tools for new startups</p>
-    </div>
-    <div>
-      <h3>Pro</h3>
-      <p>$79/mo</p>
-      <p>Everything you need to scale</p>
-    </div>
-    <div>
-      <h3>Enterprise</h3>
-      <p>Custom</p>
-      <p>Full-service solution tailored to you</p>
-    </div>
+    <h2>Pricing Plans</h2>
+    <ul>
+      <li>Starter Plan - $199/month</li>
+      <li>Pro Plan - $499/month</li>
+      <li>Enterprise Plan - Custom Pricing</li>
+    </ul>
   </section>
 
-<!-- Contact Form -->
-  <section>
+  <section class="contact">
     <h2>Contact Us</h2>
     <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+      <label>Name:<br><input type="text" name="name" required></label><br><br>
+      <label>Email:<br><input type="email" name="email" required></label><br><br>
+      <label>Message:<br><textarea name="message" rows="5" required></textarea></label><br><br>
+      <button class="cta-button" type="submit">Send</button>
     </form>
   </section>
+<script src="script.js" defer></script>
 
-<!-- Footer -->
-  <footer>
-    <p>© 2025 Startup Launch. All rights reserved.</p>
-  </footer>
 </body>
+
 </html>
