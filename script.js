@@ -28,6 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 // script.js
+form.addEventListener("submit", function (e) {
+  e.preventDefault(); // stops the page from refreshing
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Both fields are required!");
+    return;
+  }
+
+  // Simulate a successful sign-in
+  console.log("Email:", email, "Password:", password);
+});
+
 
 // Elements
 const signupModal = document.getElementById("signupModal");
