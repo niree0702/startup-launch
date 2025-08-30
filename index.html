@@ -7,20 +7,56 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="scene">
-    <div class="card">
-      <div class="card-front">
-        <h1>🎂 Happy Birthday 🎉</h1>
-        <p>Click to open your 3D card!</p>
-      </div>
-      <div class="card-back">
-        <h1>💖 Wishing You Joy!</h1>
-        <p>May your day be filled with love, laughter, and happiness!</p>
-        <button onclick="playSong()">▶ Play Song</button>
-        <audio id="birthdaySong" src="birthday-song.mp3"></audio>
+
+  <!-- 🎂 Section 1: 3D Birthday Card -->
+  <section class="hero">
+    <div class="scene">
+      <div class="card">
+        <div class="card-front">
+          <h1>🎂 Happy Birthday 🎉</h1>
+          <p>Scroll down for your surprise!</p>
+        </div>
+        <div class="card-back">
+          <h1>💖 Wishing You Joy!</h1>
+          <p>May your day be filled with love, laughter, and happiness!</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- 🎈 Section 2: Floating Balloons -->
+  <section class="balloons">
+    <h2>🎈 Sending Love Up in the Air 🎈</h2>
+    <div class="balloon-container">
+      <div class="balloon">❤️</div>
+      <div class="balloon">💖</div>
+      <div class="balloon">💕</div>
+      <div class="balloon">💓</div>
+      <div class="balloon">💞</div>
+    </div>
+  </section>
+
+  <!-- 📸 Section 3: Pictures & Videos -->
+  <section class="gallery">
+    <h2>📸 Memories Together</h2>
+    <div class="media">
+      <img src="pic1.jpg" alt="Memory 1">
+      <img src="pic2.jpg" alt="Memory 2">
+      <video controls>
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- 🎶 Section 4: Song -->
+  <section class="music">
+    <h2>🎶 Special Song for You</h2>
+    <button onclick="playSong()">▶ Play Song</button>
+    <audio id="birthdaySong" src="birthday-song.mp3"></audio>
+  </section>
 
   <script src="script.js"></script>
 </body>
