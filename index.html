@@ -1,63 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Birthday Wish</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎂 3D Birthday Wish — Scrollable</title>
+  <style>
+    /* ============ Base ============ */
+    :root {
+      --pink: #ff4d88;
+      --hotpink: #ff1493;
+      --bg1: #ffecd2;
+      --bg2: #fcb69f;
+      --card1: #74ebd5;
+      --card2: #acb6e5;
+      --card3: #ff9a9e;
+      --card4: #fad0c4;
+      --shadow: rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: #222;
+      background: linear-gradient(120deg, var(--bg1), var(--bg2));
+      background-attachment: fixed;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* ============ Door Overlay (3D swing + glow) ============ */
+    .door-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      perspective: 1400px; /* needed for 3D */
+      pointer-events: auto;
+    }
+    .door {
+      position: absolute; top: 0; height: 100%; width: 50%;
+      background: linear-gradient(145deg, #8b4513, #a0522d);
+      box-shadow: inset 0 0 60px rgba(0,0,0,.45);
+      transform-style: preserve-3d;
+      transition: transform 1.3s ease-in-out, box-shadow .6s ease;
+    }
+    .left-door { left: 0; transform-origin: left center; border-right: 3px solid #4b2e12; }
+    .right-door { right: 0; transform-origin: right center; border-left: 3px solid #4b2e12; }
+
+    /* Door handles */
+    .handle { position: absolute; top: 50%; width: 18px; height: 18px; background: gold; border-radius: 50%; transform: translateY(-50%); box-shadow: 0 0 10px rgba(255,215,0,.6); }
+    .left-door .handle { right: 22px; }
+    .right-door .handle { left: 22px; }
+
+    /* Subtle slats for wood texture */
+    .door::before, .door::after {
+      content: ""; position: absolute; left: 12px; right: 12px; height: 20%; border: 2px solid rgba(255,255,255,.08);
+    }
+    .door::before { top: 18%; }
+    .door::after  { bottom: 18%; }
+
+    /* Glow behind doors after opening */
+    .door-glow { position: absolute; inset: 0; background: radial-gradient(60% 60% at 50% 50%, rgba(255,223,0,.55), transparent 65%); opacity: 0; transition: opacity 1.1s ease; pointer-events:none; }
+
+    /* Open button */
+    .open-btn {
+      position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%);
+      padding: 14px 26px; font-size: 16px; border: none; border-radius: 12px; cursor: pointer;
+      background: var(--hotpink); color: #fff; box-shadow: 0 10px 25px var(--shadow);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .open-btn:hover { transform: translateX(-50%) scale(1.05); filter: brightness(1.07); }
+
+    /* Opening state */
+    .door-overlay.opened .left-door  { transform: rotateY(-100deg); box-shadow: 0 0 60px rgba(255,215,0,.35), inset 0 0 30px rgba(0,0,0,.35); }
+    .door-overlay.opened .right-door { transform: rotateY(100deg);  box-shadow: 0 0 60px rgba(255,215,0,.35), inset 0 0 30px rgba(0,0,0,.35); }
+    .door-overlay.opened .door-glow { opacity: 1; }
+
+    /* Remove overlay from interactions after animation */
+    .door-overlay.hidden { pointer-events: none; }
+
+    /* ============ Hearts (floating background) ============ */
+    .hearts span {
+      position: fixed; bottom: -60px; font-size: 40px; opacity: .85; color: #e6005c; z-index: 2;
+      animation: floatUp 10s linear infinite;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));
+      user-select: none; pointer-events: none;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: .9; }
+      50%  { transform: translateY(-52vh) scale(1.2) rotate(5deg); }
+      100% { transform: translateY(-110vh) scale(.95) rotate(-5deg); opacity: 0; }
+    }
+    /* different lanes/delays */
+    .hearts span:nth-child(1){ left:10%; animation-delay:0s}
+    .hearts span:nth-child(2){ left:26%; animation-delay:2s}
+    .hearts span:nth-child(3){ left:43%; animation-delay:4s}
+    .hearts span:nth-child(4){ left:61%; animation-delay:6s}
+    .hearts span:nth-child(5){ left:79%; animation-delay:8s}
+
+    /* ============ Sections ============ */
+    section { min-height: 100svh; padding: 56px 20px; display: grid; place-items: center; text-align: center; position: relative; z-index: 3; }
+    .hero    { background: linear-gradient(135deg, #ffe6f0, #e6f0ff); }
+    .balloon-sec { background: #ffe4ec; }
+    .gallery { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+    .music   { background: linear-gradient(135deg, #f6d365, #fda085); }
+    .message { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+
+    h1, h2 { color: var(--hotpink); text-shadow: 0 0 10px rgba(255,105,180,.6); margin: 0 0 10px; }
+    p { max-width: 760px; font-size: 1.1rem; margin: 0; }
+
+    /* ============ 3D Flip Card ============ */
+    .scene { width: clamp(280px, 70vw, 420px); aspect-ratio: 16/10; perspective: 1000px; }
+    .card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform .9s; cursor: pointer; }
+    .card.is-flipped { transform: rotateY(180deg); }
+    .card-face { position: absolute; inset: 0; border-radius: 18px; display: grid; place-items: center; padding: 20px; backface-visibility: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.25); }
+    .card-front { background: linear-gradient(135deg, var(--card1), var(--card2)); }
+    .card-back  { background: linear-gradient(135deg, var(--card3), var(--card4)); transform: rotateY(180deg); }
+    .card-face h1 { font-size: clamp(28px, 5vw, 42px); margin-bottom: 6px; }
+
+    /* ============ Balloon strip (decorative) ============ */
+    .balloon-strip { height: 340px; position: relative; width: min(1000px, 92vw); }
+    .b { position: absolute; bottom: -60px; font-size: 38px; animation: floatUp 7.5s ease-in infinite; }
+    .b:nth-child(1){ left:5%}
+    .b:nth-child(2){ left:20%; animation-delay:1s}
+    .b:nth-child(3){ left:36%; animation-delay:2s}
+    .b:nth-child(4){ left:54%; animation-delay:3s}
+    .b:nth-child(5){ left:70%; animation-delay:4s}
+    .b:nth-child(6){ left:86%; animation-delay:5s}
+
+    /* ============ Gallery Grid ============ */
+    .media-grid { width: min(1100px,92vw); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px; }
+    .media-grid img, .media-grid video, .photo-box { width: 100%; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.25); background:#fff; }
+    .media-grid video { background:#000; }
+    .photo-box { display:grid; place-items:center; aspect-ratio: 3/2; padding: 18px; color:#555; background: repeating-linear-gradient(135deg,#ffe6ef,#ffe6ef 10px,#fff 10px,#fff 20px); border:2px dashed rgba(255,20,147,.3); }
+
+    /* ============ Buttons ============ */
+    .btn { padding: 12px 22px; border: none; border-radius: 12px; background: var(--hotpink); color: #fff; font-size: 1rem; box-shadow: 0 10px 22px var(--shadow); cursor: pointer; transition: transform .15s ease, filter .2s ease; }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.07); }
+
+    /* ============ Fade-in on scroll ============ */
+    .reveal { opacity: 0; transform: translateY(20px) scale(.98); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0) scale(1); }
+
+    /* Small screens tweaks */
+    @media (max-width: 480px){
+      .open-btn { bottom: 6%; }
+      .hearts span { font-size: 34px; }
+    }
+  </style>
 </head>
 <body>
+  <!-- ======== 3D Door Intro ======== -->
+  <div id="doorOverlay" class="door-overlay">
+    <div class="door left-door"><span class="handle"></span></div>
+    <div class="door right-door"><span class="handle"></span></div>
+    <button id="openBtn" class="open-btn">Tap to Open 🎁</button>
+    <div class="door-glow"></div>
+  </div>
 
-  <!-- 🎂 Section 1: 3D Birthday Card -->
+  <!-- Floating hearts (background) -->
+  <div class="hearts" aria-hidden="true">
+    <span>❤</span><span>❤</span><span>❤</span><span>❤</span><span>❤</span>
+  </div>
+
+  <!-- ======== Content ======== -->
+  
+  <!-- Section 1: 3D Birthday Card -->
   <section class="hero">
-    <div class="scene">
-      <div class="card">
-        <div class="card-front">
-          <h1>🎂 Happy Birthday 🎉</h1>
-          <p>Scroll down for your surprise!</p>
+    <div class="scene reveal">
+      <div class="card" id="flipCard" title="Click to flip the 3D card">
+        <div class="card-face card-front">
+          <div>
+            <h1>🎂 Happy Birthday!</h1>
+            <p>Click the card — then scroll for surprises ↓</p>
+          </div>
         </div>
-        <div class="card-back">
-          <h1>💖 Wishing You Joy!</h1>
-          <p>May your day be filled with love, laughter, and happiness!</p>
+        <div class="card-face card-back">
+          <div>
+            <h1>💖 Wishing You Joy</h1>
+            <p>May your day be full of love, laughter & endless smiles!</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 🎈 Section 2: Floating Balloons -->
-  <section class="balloons">
-    <h2>🎈 Sending Love Up in the Air 🎈</h2>
-    <div class="balloon-container">
-      <div class="balloon">❤️</div>
-      <div class="balloon">💖</div>
-      <div class="balloon">💕</div>
-      <div class="balloon">💓</div>
-      <div class="balloon">💞</div>
+  <!-- Section 2: Hearts/Balloons strip -->
+  <section class="balloon-sec">
+    <h2 class="reveal">🎈 Floating wishes to the sky</h2>
+    <div class="balloon-strip" aria-hidden="true">
+      <div class="b">❤️</div><div class="b">💖</div><div class="b">💕</div><div class="b">💓</div><div class="b">💞</div><div class="b">💗</div>
     </div>
   </section>
 
-  <!-- 📸 Section 3: Pictures & Videos -->
+  <!-- Section 3: Gallery (Images & 2 Videos) -->
   <section class="gallery">
-    <h2>📸 Memories Together</h2>
-    <div class="media">
-      <img src="pic1.jpg" alt="Memory 1">
-      <img src="pic2.jpg" alt="Memory 2">
-      <video controls>
-        <source src="video1.mp4" type="video/mp4">
+    <h2 class="reveal">📸 Memories & 🎥 Videos</h2>
+    <p class="reveal">Replace placeholders below with your files inside an <strong>assets/</strong> folder.</p>
+    <div class="media-grid">
+      <!-- ✅ Replace with your real images (keep names or change both src and label) -->
+      <img src="assets/photo1.jpg" alt="Photo 1" class="reveal" />
+      <img src="assets/photo2.jpg" alt="Photo 2" class="reveal" />
+      <div class="photo-box reveal">Add your photo: assets/photo3.jpg</div>
+
+      <!-- 🎥 Two videos with songs (put your mp4 files in assets/) -->
+      <video class="reveal" controls preload="metadata" poster="assets/video1-poster.jpg">
+        <source src="assets/video1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
-      <video controls>
-        <source src="video2.mp4" type="video/mp4">
+      <video class="reveal" controls preload="metadata" poster="assets/video2-poster.jpg">
+        <source src="assets/video2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
     </div>
   </section>
 
-  <!-- 🎶 Section 4: Song -->
+  <!-- Section 4: Music -->
   <section class="music">
-    <h2>🎶 Special Song for You</h2>
-    <button onclick="playSong()">▶ Play Song</button>
-    <audio id="birthdaySong" src="birthday-song.mp3"></audio>
+    <h2 class="reveal">🎶 Special Song</h2>
+    <p class="reveal">Place your audio at <code>assets/birthday-song.mp3</code> and press play.</p>
+    <button class="btn reveal" id="playBtn">▶ Play Song</button>
+    <audio id="birthdaySong" src="assets/birthday-song.mp3"></audio>
   </section>
 
-  <script src="script.js"></script>
+  <!-- Section 5: Final Message -->
+  <section class="message">
+    <h2 class="reveal">💌 From the Heart</h2>
+    <p class="reveal">You make the world brighter just by being in it. Have a magical birthday! ✨</p>
+  </section>
+
+  <script>
+    // ======== Helpers ========
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      /* 3D Card flip */
+      const card = $('#flipCard');
+      if (card) {
+        card.addEventListener('click', () => card.classList.toggle('is-flipped'));
+      }
+
+      /* Play song with graceful error */
+      const playBtn = $('#playBtn');
+      const audioEl = $('#birthdaySong');
+      if (playBtn && audioEl) {
+        playBtn.addEventListener('click', async () => {
+          try {
+            await audioEl.play();
+          } catch (err) {
+            alert('Could not play the song. Make sure the file exists at\nassets/birthday-song.mp3');
+            console.error(err);
+          }
+        });
+      }
+
+      /* Replace missing images with placeholders */
+      $$('img').forEach(img => {
+        img.addEventListener('error', () => {
+          const box = document.createElement('div');
+          box.className = 'photo-box';
+          box.textContent = 'Add your photo: ' + (img.getAttribute('src') || '');
+          img.replaceWith(box);
+        });
+      });
+
+      /* Reveal on scroll */
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+      }, { threshold: 0.15 });
+      $$('.reveal').forEach(el => io.observe(el));
+
+      /* Door open interactions */
+      const overlay = $('#doorOverlay');
+      const openBtn = $('#openBtn');
+      const openDoors = () => {
+        if (!overlay) return;
+        overlay.classList.add('opened');
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+          // Optional: auto-scroll to first section
+          document.querySelector('.hero')?.scrollIntoView({ behavior: 'smooth' });
+        }, 1350);
+      };
+
+      if (openBtn) openBtn.addEventListener('click', openDoors);
+
+      // Fallback: auto-open after 2.2s if user doesn't tap
+      setTimeout(() => { if (overlay && !overlay.classList.contains('opened')) openDoors(); }, 2200);
+    });
+  </script>
 </body>
 </html>
